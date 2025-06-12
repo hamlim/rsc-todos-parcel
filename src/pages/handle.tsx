@@ -5,7 +5,7 @@ import "../client";
 import { env } from "cloudflare:workers";
 import { CheckIcon, XIcon } from "lucide-react";
 import { Suspense } from "react";
-import Root from "../_root";
+import { themeCheck } from "../_root";
 import { checkTodo, createTodo } from "../actions";
 
 async function Todos({ handle }: { handle: string }) {
@@ -64,18 +64,27 @@ async function Todos({ handle }: { handle: string }) {
 
 export async function Page({ handle }: { handle: string }) {
   return (
-    <Root>
-      <main className="mx-auto max-w-prose p-4">
-        <h1 className="text-center text-2xl font-bold">{handle} Todos:</h1>
-        <form action={createTodo}>
-          <input type="hidden" name="handle" value={handle} />
-          <input type="text" name="title" placeholder="Add a todo" />
-          <button type="submit">Add</button>
-        </form>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Todos handle={handle} />
-        </Suspense>
-      </main>
-    </Root>
+    <html lang="en" suppressHydrationWarning>
+      <head suppressHydrationWarning>
+        <title>{handle} Todos</title>
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+          dangerouslySetInnerHTML={{ __html: `(${themeCheck.toString()})()` }}
+        />
+      </head>
+      <body>
+        <main className="mx-auto max-w-prose p-4">
+          <h1 className="text-center text-2xl font-bold">{handle} Todos:</h1>
+          <form action={createTodo}>
+            <input type="hidden" name="handle" value={handle} />
+            <input type="text" name="title" placeholder="Add a todo" />
+            <button type="submit">Add</button>
+          </form>
+          <Suspense fallback={<p>Loading...</p>}>
+            <Todos handle={handle} />
+          </Suspense>
+        </main>
+      </body>
+    </html>
   );
 }
