@@ -1,7 +1,7 @@
 "use server-entry";
 
 import { themeCheck } from "../_root";
-import "../styles.css";
+import "../index.css";
 import "../client";
 
 export async function Page() {

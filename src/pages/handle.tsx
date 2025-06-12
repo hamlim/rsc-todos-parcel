@@ -1,6 +1,6 @@
 "use server-entry";
 
-import "../styles.css";
+import "../handle.css";
 import "../client";
 import { env } from "cloudflare:workers";
 import { CheckIcon, XIcon } from "lucide-react";
