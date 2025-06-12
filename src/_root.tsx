@@ -11,3 +11,18 @@ export function themeCheck() {
     preferred = newPreferred;
   });
 }
+
+export default function Root({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head suppressHydrationWarning>
+        <title>Rsc Todos Parcel</title>
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+          dangerouslySetInnerHTML={{ __html: `(${themeCheck.toString()})()` }}
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}

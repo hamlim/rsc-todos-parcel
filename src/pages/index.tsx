@@ -1,19 +1,12 @@
 "use server-entry";
 
-import { themeCheck } from "../_root";
-import "../index.css";
+import Root from "../_root";
+import "../styles.css";
 import "../client";
 
 export async function Page() {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head suppressHydrationWarning>
-        <title>Rsc Todos Parcel</title>
-        <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-          dangerouslySetInnerHTML={{ __html: `(${themeCheck.toString()})()` }}
-        />
-      </head>
+    <Root>
       <body>
         <div className="flex flex-col items-center justify-center h-screen">
           <h2>Home</h2>
@@ -23,6 +16,6 @@ export async function Page() {
           </p>
         </div>
       </body>
-    </html>
+    </Root>
   );
 }
