@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@parcel/rsc": "2.15.2",
+    "@tailwindcss/typography": "0.5.16",
     "hono": "4.7.11",
     "lucide-react": "0.514.0",
     "react": "19.1.0",
