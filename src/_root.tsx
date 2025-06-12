@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import "../styles.css";
 
 function themeCheck() {
   let prefersDarkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -17,7 +16,7 @@ export default function Root({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning>
-        <title>Waku Template</title>
+        <title>Rsc Todos Parcel</title>
       </head>
       <body>
         <script
